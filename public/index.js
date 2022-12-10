@@ -6,8 +6,8 @@ const menuToggleButton = document.querySelector("#menu-toggle-btn");
 const locationText = document.querySelector("#location-text");
 const menuDiv = document.querySelector("#menu");
 const locationSelect = document.querySelector("#location-select");
-const templateCopyButton = document.querySelector("#template-copy-btn");
-const templateEditButton = document.querySelector("#template-edit-btn");
+// const templateCopyButton = document.querySelector("#template-copy-btn");
+// const templateEditButton = document.querySelector("#template-edit-btn");
 const downloadSelect = document.querySelector("#download-type-sel");
 const surveysDownloadButton = document.querySelector("#surveys-download-btn");
 const surveysEraseButton = document.querySelector("#surveys-erase-btn");
@@ -21,8 +21,8 @@ const surveyResetButton = document.querySelector("#survey-reset-btn");
 
 menuToggleButton.onclick = () => toggleMenu();
 locationSelect.onchange = e => setLocation(e.target.value);
-templateCopyButton.onclick = () => copyTemplate();
-templateEditButton.onclick = () => editTemplate();
+// templateCopyButton.onclick = () => copyTemplate();
+// templateEditButton.onclick = () => editTemplate();
 surveysDownloadButton.onclick = () => downloadSurveys();
 surveysEraseButton.onclick = () => eraseSurveys();
 teamMetric.oninput = () => backupSurvey();
@@ -62,11 +62,11 @@ const metricTypes = {
 const infiniteRechargeSurvey = {
   "metrics": [
     { "name": "Team left tarmac?", "type": "toggle", "group": "Auto (Qualitative)" },
-    { "name": "Team collected balls?", "type": "toggle"},
-    { "name": "Auto Aquired Cargo?", "type": "toggle"},
+    { "name": "Team collected balls?", "type": "toggle" },
+    { "name": "Auto Aquired Cargo?", "type": "toggle" },
     // { "name": "Rating", "type": "rating" },
 
-    { "name": "Top", "type": "number", "group": "Auto (Balls)"},
+    { "name": "Top", "type": "number", "group": "Auto (Balls)" },
     { "name": "Bottom", "type": "number" },
     { "name": "Missed", "type": "number" },
 
@@ -75,22 +75,22 @@ const infiniteRechargeSurvey = {
     { "name": "Missed", "type": "number" },
 
     { "name": "Safe area usage:", "type": "select", "values": ["None", "A Little", "A Lot"], "group": "Teleop (Qualitative)" },
-    { "name": "Cargo Intake From:", "type": "select", "values": ["Terminal", "Ground", "Both","Not Attempted"] },
-    { "name": "Was Defended?", "type": "toggle"},
-    { "name": "WallBot?", "type": "toggle"},
+    { "name": "Cargo Intake From:", "type": "select", "values": ["Terminal", "Ground", "Both", "Not Attempted"] },
+    { "name": "Was Defended?", "type": "toggle" },
+    { "name": "WallBot?", "type": "toggle" },
 
     { "name": "Team attempts climbs?", "type": "toggle", "group": "Endgame (Climb)" },
-    { "name": "Bar number reached on endgame", "type": "select", "values": ["Attempted but failed", "Low", "Mid", "High", "Traversal","Not attempted"]},
-    { "name": "If climb failed,Last successful rung, if any ", "type": "select", "values": ["n/a","Low", "Mid", "High", "Traversal"]},
-    { "name": "Started Climb before Endgame?", "type": "toggle"},
+    { "name": "Bar number reached on endgame", "type": "select", "values": ["Attempted but failed", "Low", "Mid", "High", "Traversal", "Not attempted"] },
+    { "name": "If climb failed,Last successful rung, if any ", "type": "select", "values": ["n/a", "Low", "Mid", "High", "Traversal"] },
+    { "name": "Started Climb before Endgame?", "type": "toggle" },
 
-    { "name": "Driver Skills", "type": "select", "values": ["Not Observed","Not Effective", "Effective", "Very Effective"], "group": "After Game"  },
-    { "name": "Defense Rating", "type": "select", "values": ["Not Observed","Not Effective", "Effective", "Very Effective"]},
-    { "name": "Shot enemy balls away?", "type": "toggle"},
-    { "name": "Died/Tipped?", "type": "toggle"},
-    { "name": "Card Foul?", "type": "toggle"},
-    { "name": "Make good alliance partner?", "type": "toggle"},
-    { "name": "Confidence Rating 	", "type": "select", "values": ["very confident", "Average", "not confident"]},
+    { "name": "Driver Skills", "type": "select", "values": ["Not Observed", "Not Effective", "Effective", "Very Effective"], "group": "After Game" },
+    { "name": "Defense Rating", "type": "select", "values": ["Not Observed", "Not Effective", "Effective", "Very Effective"] },
+    { "name": "Shot enemy balls away?", "type": "toggle" },
+    { "name": "Died/Tipped?", "type": "toggle" },
+    { "name": "Card Foul?", "type": "toggle" },
+    { "name": "Make good alliance partner?", "type": "toggle" },
+    { "name": "Confidence Rating 	", "type": "select", "values": ["very confident", "Average", "not confident"] },
 
     { "name": "Extra Notes", "type": "text", "tip": "Enter extra data here...", "group": "Notes" },]
 };
@@ -118,9 +118,9 @@ if (localStorage.backup) {
   });
 }
 
-function changeteamnumber(_teamnn){
-  console.log(_teamnn != undefined);  
-  if (_teamnn != undefined){
+function changeteamnumber(_teamnn) {
+  console.log(_teamnn != undefined);
+  if (_teamnn != undefined) {
     current_team = _teamnn;
     teamMetric.value = _teamnn;
   }
@@ -229,9 +229,9 @@ function loadTemplate(newTemplate = exampleTemplate) {
   });
 }
 
-function getRobot(){
+function getRobot() {
   console.log("getRobot");
-	switch (scoutLocation) {
+  switch (scoutLocation) {
     case "Blue 1":
       return "b1";
     case "Blue 2":
@@ -246,61 +246,62 @@ function getRobot(){
       return "r3";
     default:
       return "";
-}}
-function getMatch(matchKey){
+  }
+}
+function getMatch(matchKey) {
   console.log("getMatch");
-	//This needs to be different than getTeamName() because of how JS stores their data
-	if(matchKey !== undefined){
-		if (schedule) {
-			var ret = "";
-			Array.from(schedule).forEach(match => ret = match.key == matchKey ? match.alliances : ret);
-			return ret;
-		}
-	}
-	return "";
+  //This needs to be different than getTeamName() because of how JS stores their data
+  if (matchKey !== undefined) {
+    if (schedule) {
+      var ret = "";
+      Array.from(schedule).forEach(match => ret = match.key == matchKey ? match.alliances : ret);
+      return ret;
+    }
+  }
+  return "";
 }
 
-function getTeamName(teamNumber){
+function getTeamName(teamNumber) {
   console.log("getTeamName");
-	if(teamNumber !== undefined){
-		if (teams) {
-			var teamKey = "frc" + teamNumber;
-			var ret = "";
-			Array.from(teams).forEach(team => ret = team.key == teamKey ? team.nickname : ret);
-			return ret;
-		}
-	}
-	return "";
+  if (teamNumber !== undefined) {
+    if (teams) {
+      var teamKey = "frc" + teamNumber;
+      var ret = "";
+      Array.from(teams).forEach(team => ret = team.key == teamKey ? team.nickname : ret);
+      return ret;
+    }
+  }
+  return "";
 }
-function getCurrentTeamNumberFromRobot(){
+function getCurrentTeamNumberFromRobot() {
   console.log("getCurrentTeamNumberFromRobot");
-	if(getRobot() != "" && typeof getRobot() !== 'undefined' && getCurrentMatch() != ""){
-		if(getRobot().charAt(0) == "r"){
-			return (getCurrentMatch().red.team_keys[parseInt(getRobot().charAt(1))-1]).replace("undefined","").replace("frc","");
-		} else if(getRobot().charAt(0) == "b"){
-			return (getCurrentMatch().blue.team_keys[parseInt(getRobot().charAt(1))-1]).replace("undefined","").replace("frc","");
-		}
-	}
+  if (getRobot() != "" && typeof getRobot() !== 'undefined' && getCurrentMatch() != "") {
+    if (getRobot().charAt(0) == "r") {
+      return (getCurrentMatch().red.team_keys[parseInt(getRobot().charAt(1)) - 1]).replace("undefined", "").replace("frc", "");
+    } else if (getRobot().charAt(0) == "b") {
+      return (getCurrentMatch().blue.team_keys[parseInt(getRobot().charAt(1)) - 1]).replace("undefined", "").replace("frc", "");
+    }
+  }
 }
-function getCurrentMatchKey(){
+function getCurrentMatchKey() {
   console.log("getCurrentMatchKey");
-	return "2022isde4" + "_" + "qm" + matchMetric.value;
+  return "2022isde4" + "_" + "qm" + matchMetric.value;
 }
 
-function getCurrentMatch(){
+function getCurrentMatch() {
   console.log("getCurrentMatch");
-	return getMatch(getCurrentMatchKey());
+  return getMatch(getCurrentMatchKey());
 }
-function getTeamName(teamNumber){
-	if(teamNumber !== undefined){
-		if (teams) {
-			var teamKey = "frc" + teamNumber;
-			var ret = "";
-			Array.from(teams).forEach(team => ret = team.key == teamKey ? team.nickname : ret);
-			return ret;
-		}
-	}
-	return "";
+function getTeamName(teamNumber) {
+  if (teamNumber !== undefined) {
+    if (teams) {
+      var teamKey = "frc" + teamNumber;
+      var ret = "";
+      Array.from(teams).forEach(team => ret = team.key == teamKey ? team.nickname : ret);
+      return ret;
+    }
+  }
+  return "";
 }
 
 /**
@@ -309,12 +310,12 @@ function getTeamName(teamNumber){
  */
 function setLocation(newLocation = "Red 1") {
   // teamMetric.value = getCurrentTeamNumberFromRobot();
-  scoutLocation = newLocation ;
+  scoutLocation = newLocation;
   let newTheme = "red";
   if (/blue/.test(newLocation.toLowerCase())) newTheme = "blue";
   document.documentElement.style.setProperty("--theme-color", `var(--${newTheme})`);
   localStorage.location = newLocation;
-  changeteamnumber(getCurrentTeamNumberFromRobot());  
+  changeteamnumber(getCurrentTeamNumberFromRobot());
   locationSelect.value = newLocation;
   refreshIcons();
 }
@@ -349,9 +350,32 @@ function saveSurvey() {
     ...gameMetrics.map(metric => { return { name: metric.name, value: metric.value } })
   ]);
   localStorage.surveys = JSON.stringify(surveys);
+  let csv = "";
+  if (surveys) {
+    surveys.forEach(survey => {
+      let surveyAsCSV = "";
+      survey.forEach(metric => {
+       surveyAsCSV += metric.value + ",";
+      });
+      csv += surveyAsCSV + "\n";
+    });
+  }
+  console.log(csv);
+  sendit(csv);
   resetSurvey(false);
+  localStorage.surveys = "[]";
 }
-
+function sendit(data) {
+  fetch('/', {
+    method: 'POST',
+    body: JSON.stringify({
+      data: data
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+}
 /**
  * Resets the current survey
  * @param {boolean} askUser A boolean that represents whether to prompt the user
@@ -370,51 +394,14 @@ function resetSurvey(askUser = true) {
   localStorage.backup = "";
 }
 
-/**
- * Downloads all surveys from `localStorage` either as JSON or CSV
- * @param {boolean} askUser A boolean that represents whether to prompt the user
- */
-function downloadSurveys(askUser = true) {
-  if (askUser) if (!confirm("Confirm download?")) return;
-  var fileName = localStorage.location.replace(" ", "_").toLowerCase();
-  var today = new Date();
-  fileName = fileName + "_" + today.getHours() + "h" + today.getMinutes() + "m";
-  const anchor = document.createElement("a");
-  anchor.href = "data:text/plain;charset=utf-8,";
-  switch (downloadSelect.value) {
-    case "JSON":
-      anchor.href += encodeURIComponent(localStorage.surveys);
-      anchor.download = fileName + ".json";
-      break;
-    case "CSV":
-      let surveys = JSON.parse(localStorage.surveys);
-      let csv = "";
-      if (surveys) {
-        surveys.forEach(survey => {
-          let surveyAsCSV = "";
-          survey.forEach(metric => {
-            if (typeof metric.value == "string") surveyAsCSV += "\"" + metric.value + "\",";
-            else surveyAsCSV += metric.value + ",";
-          });
-          csv += surveyAsCSV + "\n";
-        });
-      }
-      anchor.href += encodeURIComponent(csv);
-      anchor.download = fileName + ".csv";
-      break;
-  }
-  document.body.append(anchor);
-  anchor.click();
-  anchor.remove();
-}
 
 /** Erases all surveys from `localStorage` after prompting the user **/
 function eraseSurveys() {
-  if (prompt("Type 'erase' to erase saved surveys") == "erase"){
+  if (prompt("Type 'erase' to erase saved surveys") == "erase") {
     localStorage.surveys = "[]";
   }
 }
-window.onload = function(){
+window.onload = function () {
   getTeams("2022isde4");
   getSchedule("2022isde4");
 };
