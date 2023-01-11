@@ -16,9 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  const data = req.body.data;
-  const dlist = data.split(",");
-  console.log(dlist);
+  const { request, name } = req.body;
 
   const auth = new google.auth.GoogleAuth({
     keyFile: "credentials.json",
@@ -31,7 +29,7 @@ app.post("/", async (req, res) => {
   // Instance of Google Sheets API
   const googleSheets = google.sheets({ version: "v4", auth: client });
 
-  const spreadsheetId = "1UASlZ3EBCUCrgFLtLRUz4F34cIqyQ-dNJ0dc49kWkjQ";
+  const spreadsheetId = "1zkDwfzJh8Godx3Odj-aLHpSFHHZ9qZKJU6vwy_bFfSk";
 
   // Get metadata about spreadsheet
   const metaData = await googleSheets.spreadsheets.get({
@@ -50,23 +48,21 @@ app.post("/", async (req, res) => {
   await googleSheets.spreadsheets.values.append({
     auth,
     spreadsheetId,
-    range: "Sheet1!A:Z",
+    range: "Sheet1!A:B",
     valueInputOption: "USER_ENTERED",
     resource: {
-      values: [dlist],
+      values: [[request, name]],
     },
   });
 
   res.send("Successfully submitted! Thank you!");
 });
 
-app.post('/post-test', (req, res)=> {
+app.post('/submit', (req, res)=> {
   console.log("data received")
-  const data = req.body.data;
+  const data = req.body;
   console.log(data)
-  const dlist = data.split(",");
-  console.log(dlist);
-  res.send(dlist);
+  res.send('good');
 })
 
 app.listen(1337, (req, res) => console.log("running on 1337"));
