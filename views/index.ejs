@@ -36,12 +36,17 @@
         <input type="text" id="ScouterName" name="name">
         <br>
 
+        <label for="Absent">Team absent?</label>
+        <br>
+        <input type="checkbox" id="Absent" name="absent">
+        <br>
+
         <button type="button" onclick="nextPage()">Next</button>
       </div>
 
 
       <div id="page2" style="display:none;">
-        <h2>Autonomus</h2>
+        <h1>Autonomus</h1>
         <label for="address">cone:</label>
         <div> 
           <button type="button" onclick="decrement('AutonomusConeHigh')">-</button>
@@ -90,17 +95,75 @@
         <button type="button" onclick="prevPage()">Previous</button>
         <button type="button" onclick="nextPage()">Next</button>
       </div>
+      
+
       <div id="page3" style="display:none;">
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age">
+        <h1>Teleop</h1>
+        <label for="address">cone:</label>
+        <div> 
+          <button type="button" onclick="decrement('TeleopConeHigh')">-</button>
+          <input type="text" id="TeleopConeHigh" value="0" readonly>
+          <button type="button" onclick="increment('TeleopConeHigh')">+</button>
+        </div>
+        <div>
+          <button type="button" onclick="decrement('TeleopConeMid')">-</button>
+          <input type="text" id="TeleopConeMid" value="0" readonly>
+          <button type="button" onclick="increment('TeleopConeMid')">+</button>
+        </div>
+        <div>
+          <button type="button" onclick="decrement('TeleopConeHybrid')">-</button>
+          <input type="text" id="TeleopConeHybrid" value="0" readonly>
+          <button type="button" onclick="increment('TeleopConeHybrid')">+</button>
+        </div>
+
+        <label for="address">cube:</label>
+        <div> 
+          <button type="button" onclick="decrement('TeleopCubeHigh')">-</button>
+          <input type="text" id="TeleopCubeHigh" value="0" readonly>
+          <button type="button" onclick="increment('TeleopCubeHigh')">+</button>
+        </div>
+        <div>
+          <button type="button" onclick="decrement('TeleopCubeMid')">-</button>
+          <input type="text" id="TeleopCubeMid" value="0" readonly>
+          <button type="button" onclick="increment('TeleopCubeMid')">+</button>
+        </div>
+        <div>
+          <button type="button" onclick="decrement('TeleopCubeHybrid')">-</button>
+          <input type="text" id="TeleopCubeHybrid" value="0" readonly>
+          <button type="button" onclick="increment('TeleopCubeHybrid')">+</button>
+        </div>
+
+
         <br>
         <button type="button" onclick="prevPage()">Previous</button>
         <button type="button" onclick="nextPage()">Next</button> 
       </div>
+
       <div id="page4" style="display:none;">
-        <label for="interests">Interests:</label>
-        <input type="text" id="interests" name="interests">
+        <h1>Endgame</h1>
+
+        <label for="Crashed">Crashed?</label>
         <br>
+        <select name="Crashed" id="Crashed">
+          <option value="Didn't">Didn't crashed</option>
+          <option value="Did">Crashed and stopped</option>
+          <option value="DidContinue">Crashed and continued</option>
+        </select>
+        <br>
+
+        <label for="Defense">Defensive?</label>
+        <input type="checkbox" id="Defense" name="defense">
+        <br>
+
+        <label for="Fouls">How many fouls?</label>
+        <input type="text" id="Fouls" name="fouls">
+        <br>
+
+        <label for="Notes">Notes:</label>
+        <br>
+        <input type="text" id="Notes" name="notes">
+        <br>
+
         <button type="button" onclick="prevPage()">Previous</button>
         <button type="submit">Submit</button>
       </div>
